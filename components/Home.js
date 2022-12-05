@@ -167,74 +167,76 @@ function Home({navigation}) {
               </View>
             )}
 
-            <View
-              style={{
-                width: '100%',
-                flexDirection: 'row',
-                flexWrap: 'wrap',
-                justifyContent: 'center',
-                alignItems: 'center',
-              }}>
-              {data &&
-                data.length > 0 &&
-                data.map((value, index) => {
-                  return (
-                    <View key={index} style={Style.childrenBox}>
-                      <Image
-                        source={{width: 120, height: 120, uri: value.image}}
-                      />
-                      <View
-                        style={{
-                          backgroundColor: '#eee',
-                          padding: 10,
-                          borderRadius: 5,
-                          marginTop: 10,
-                        }}>
-                        <Text
+            <ScrollView horizontal={true}>
+              <View
+                style={{
+                  width: '100%',
+                  flexDirection: 'row',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                }}>
+                {data &&
+                  data.length > 0 &&
+                  data.map((value, index) => {
+                    return (
+                      <View key={index} style={Style.childrenBox}>
+                        <Image
+                          resizeMode="contain"
+                          source={{width: 120, height: 120, uri: value.image}}
+                        />
+                        <View
                           style={{
-                            color: '#333',
-                            fontSize: 15,
-                            paddingVertical: 5,
-                          }}>
-                          {value.title && value.title.length > 20
-                            ? `${value.title.slice(0, 20)}...`
-                            : value.title}
-                        </Text>
-                        <Text
-                          style={{
-                            width: 150,
-                            fontSize: 13,
-                            paddingVertical: 5,
-                          }}>
-                          {value.description && value.description.length > 50
-                            ? `${value.description.slice(0, 50)}...`
-                            : value.description}
-                        </Text>
-                        <Text
-                          style={{
-                            fontSize: 18,
-                            fontWeight: 'bold',
-                            color: '#1b0a26',
-                          }}>
-                          ${value.price}
-                        </Text>
-                        <TouchableOpacity
-                          onPress={() => navigation.navigate('error')}
-                          style={{
-                            padding: 20,
-                            backgroundColor: '#1b0a26',
+                            backgroundColor: '#eee',
+                            padding: 10,
                             borderRadius: 5,
                             marginTop: 10,
                           }}>
-                          <Text style={{fontSize: 15, color: '#eee'}}>
-                            Add to card
+                          <Text
+                            style={{
+                              color: '#333',
+                              fontSize: 15,
+                              paddingVertical: 5,
+                            }}>
+                            {value.title && value.title.length > 20
+                              ? `${value.title.slice(0, 20)}...`
+                              : value.title}
                           </Text>
-                        </TouchableOpacity>
+                          <Text
+                            style={{
+                              width: 150,
+                              fontSize: 13,
+                              paddingVertical: 5,
+                            }}>
+                            {value.description && value.description.length > 50
+                              ? `${value.description.slice(0, 50)}...`
+                              : value.description}
+                          </Text>
+                          <Text
+                            style={{
+                              fontSize: 18,
+                              fontWeight: 'bold',
+                              color: '#1b0a26',
+                            }}>
+                            ${value.price}
+                          </Text>
+                          <TouchableOpacity
+                            onPress={() => navigation.navigate('detail', value)}
+                            style={{
+                              padding: 20,
+                              backgroundColor: '#1b0a26',
+                              borderRadius: 5,
+                              marginTop: 10,
+                            }}>
+                            <Text style={{fontSize: 15, color: '#eee'}}>
+                              Add to card
+                            </Text>
+                          </TouchableOpacity>
+                        </View>
                       </View>
-                    </View>
-                  );
-                })}
-            </View>
+                    );
+                  })}
+              </View>
+            </ScrollView>
           </View>
         </View>
       </ScrollView>

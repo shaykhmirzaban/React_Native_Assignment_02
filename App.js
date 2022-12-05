@@ -7,6 +7,7 @@ import Login from './components/Login';
 import SignUp from './components/SignUp';
 import WelcomeScreen from './components/WelcomeScreen';
 import Error from './components/Error.js';
+import Detail from './components/Detail';
 
 const Stack = createNativeStackNavigator();
 
@@ -32,6 +33,11 @@ function App() {
         <Stack.Screen
           name="home"
           component={Home}
+          options={{statusBarHidden: false, headerShown: false}}
+        />
+        <Stack.Screen
+          name="detail"
+          component={Detail}
           options={{statusBarHidden: false, headerShown: false}}
         />
         <Stack.Screen
